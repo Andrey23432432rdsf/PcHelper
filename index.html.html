@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Компьютерный мастер — профилактика, Windows, сборка ПК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e8edf1;--panel:#f7f9fa;--ink:#10202e;--mute:#556574;--blue:#1560ff;--cu:#c4702a;--line:#c5d0d9;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1821;--panel:#15232f;--ink:#e6edf3;--mute:#93a4b3;--blue:#5b92ff;--cu:#e0914d;--line:#27394a}}
+:root[data-theme="dark"]{--bg:#0e1821;--panel:#15232f;--ink:#e6edf3;--mute:#93a4b3;--blue:#5b92ff;--cu:#e0914d;--line:#27394a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Onest,system-ui,sans-serif}
+h1,h2,h3{font-family:Unbounded,Onest,system-ui,sans-serif;font-weight:500;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font-family:Unbounded,sans-serif;font-weight:700;font-size:17px;text-decoration:none}
+nav a{margin-left:22px;text-decoration:none;color:var(--mute);font-size:15px}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:56px 0 88px}
+.hero h1{font-size:clamp(32px,5.2vw,58px);letter-spacing:-.02em}
+.hero p{color:var(--mute);max-width:46ch;margin:22px 0 32px;font-size:19px}
+.btn{display:inline-block;background:var(--blue);color:#fff;padding:15px 26px;border-radius:10px;text-decoration:none;font-weight:600}
+.btn:hover{filter:brightness(1.08)}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-left:10px}
+.win{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;box-shadow:0 18px 40px -22px rgba(16,32,46,.35)}
+.win small{color:var(--mute);display:block}
+.win .t{font-family:Unbounded,sans-serif;font-size:19px;margin:6px 0 22px}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--blue);transition:width .25s linear}
+.pct{font-family:Unbounded,sans-serif;font-size:44px;margin-top:18px}
+.win ul{list-style:none;padding:0;margin:18px 0 0;color:var(--mute);font-size:15px}
+.win li{padding:7px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between}
+.win li b{color:var(--cu);font-weight:600}
+section{padding:72px 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(25px,3.6vw,38px);margin-bottom:12px;letter-spacing:-.01em}
+.lead{color:var(--mute);max-width:56ch;margin:0 0 44px}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.svc article{padding:32px 28px}
+.svc article+article{border-left:1px solid var(--line)}
+.svc h3{font-size:20px;margin-bottom:12px}
+.svc p{color:var(--mute);margin:0 0 16px;font-size:16px}
+.svc ul{margin:0;padding-left:18px;font-size:15.5px}
+.svc li{margin:5px 0}
+.svc li::marker{color:var(--cu)}
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;counter-reset:s}
+.steps li{counter-increment:s;padding-top:18px;border-top:3px solid var(--cu)}
+.steps li::before{content:"Шаг " counter(s);color:var(--mute);font-size:14px;display:block;margin-bottom:6px}
+.steps b{font-family:Unbounded,sans-serif;font-weight:500;font-size:17px;display:block;margin-bottom:6px}
+.steps span{color:var(--mute);font-size:15.5px}
+.cta{background:var(--ink);color:var(--bg);border-radius:18px;padding:48px 40px;display:flex;justify-content:space-between;gap:30px;align-items:center;flex-wrap:wrap}
+.cta h2{font-size:clamp(24px,3.4vw,34px);max-width:16ch}
+.cta p{margin:10px 0 0;opacity:.75}
+.cta .btn{background:var(--bg);color:var(--ink)}
+.cta .row{display:flex;gap:12px;flex-wrap:wrap}
+footer{padding:34px 0 48px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+@media (max-width:820px){
+.hero{grid-template-columns:1fr;gap:36px;padding:32px 0 56px}
+.svc{grid-template-columns:1fr}.svc article+article{border-left:0;border-top:1px solid var(--line)}
+.steps{grid-template-columns:1fr 1fr}nav{display:none}
+.btn.alt{margin:12px 0 0}.cta{padding:34px 24px}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><a class="logo" href="#">ПК-мастер</a><nav><a href="#uslugi">Услуги</a><a href="#kak">Как работаю</a><a href="#kontakty">Контакты</a></nav></header>
+
+<div class="hero">
+<div>
+<h1>Компьютер снова быстрый, тихий и надёжный</h1>
+<p>Чищу и обслуживаю ПК, настраиваю и обновляю Windows, собираю компьютеры под ваши задачи — от офиса до игр.</p>
+<a class="btn" href="#kontakty">Оставить заявку</a><a class="btn alt" href="#uslugi">Что я делаю</a>
+</div>
+<div class="win" aria-label="Пример обновления Windows">
+<small>Центр обновления Windows</small>
+<div class="t" id="st">Устанавливаем обновления…</div>
+<div class="bar"><i id="fill"></i></div>
+<div class="pct" id="pct">0%</div>
+<ul><li>Драйверы <b>обновлены</b></li><li>Температура процессора <b>в норме</b></li><li>Система от пыли <b>очищена</b></li></ul>
+</div>
+</div>
+</div>
+
+<section id="uslugi"><div class="wrap">
+<h2>Три задачи, которые я закрываю полностью</h2>
+<p class="lead">Объясняю простыми словами, что делаю и зачем. Без лишних замен и навязанных услуг.</p>
+<div class="svc">
+<article><h3>Профилактика ПК</h3><p>Чтобы компьютер не перегревался и не шумел.</p><ul><li>Чистка от пыли</li><li>Замена термопасты</li><li>Проверка температур и вентиляторов</li><li>Диагностика накопителей</li></ul></article>
+<article><h3>Windows и драйверы</h3><p>Система работает стабильно и без «тормозов».</p><ul><li>Обновление и установка Windows</li><li>Драйверы и программы</li><li>Удаление вирусов и мусора</li><li>Резервная копия данных</li></ul></article>
+<article><h3>Сборка ПК</h3><p>Собираю под бюджет и задачи, без переплаты.</p><ul><li>Подбор комплектующих</li><li>Сборка и прокладка кабелей</li><li>Настройка BIOS и разгона по желанию</li><li>Проверка под нагрузкой</li></ul></article>
+</div></div></section>
+
+<section id="kak"><div class="wrap">
+<h2>Как проходит работа</h2>
+<p class="lead">Стоимость называю до начала работы, после диагностики.</p>
+<ol class="steps">
+<li><b>Заявка</b><span>Вы описываете проблему или задачу.</span></li>
+<li><b>Диагностика</b><span>Нахожу причину и называю цену и сроки.</span></li>
+<li><b>Работа</b><span>Делаю только согласованное.</span></li>
+<li><b>Проверка</b><span>Показываю результат и даю рекомендации.</span></li>
+</ol></div></section>
+
+<section id="kontakty"><div class="wrap">
+<div class="cta">
+<div><h2>Расскажите, что с компьютером</h2><p>Отвечу в течение дня и подскажу, что делать.</p></div>
+<div class="row"><a class="btn" href="https://t.me/gyxoly">Написать в Telegram @gyxoly</a></div>
+</div></div></section>
+
+<footer><div class="wrap">© ПК-мастер. Профилактика, Windows, сборка компьютеров.</div></footer>
+
+<script>
+(function(){
+var f=document.getElementById('fill'),p=document.getElementById('pct'),t=document.getElementById('st'),n=0;
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){f.style.width='100%';p.textContent='100%';t.textContent='Всё обновлено';return}
+var id=setInterval(function(){n+=Math.ceil(Math.random()*7);if(n>=100){n=100;clearInterval(id);t.textContent='Всё обновлено'}
+f.style.width=n+'%';p.textContent=n+'%'},140)})();
+</script>
+</body>
+</html>
